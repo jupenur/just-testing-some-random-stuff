@@ -11,7 +11,7 @@ jobs:
             let r1 = await github.rest.git.createTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag: "potato",
+              tag: "turnip",
               message: "yes",
               object: "9f9240f0a442e3a391115551b40676ba6bd2d11e",
               type: "commit"
@@ -20,7 +20,7 @@ jobs:
             let r2 = await github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/potato',
+              ref: 'refs/tags/turnip',
               sha: r1.data.sha
             });
             console.log(r2);
