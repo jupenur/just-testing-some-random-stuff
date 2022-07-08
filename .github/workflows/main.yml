@@ -13,7 +13,7 @@ jobs:
               repo: context.repo.repo,
               tag: "potato",
               message: "yes",
-              object: "${{ github.sha }}",
+              object: "9f9240f0a442e3a391115551b40676ba6bd2d11e",
               type: "commit"
             });
             console.log(response);
