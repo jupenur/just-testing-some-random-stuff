@@ -1,0 +1,19 @@
+on: [pull_request]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get author
+        uses: actions/github-script@v5
+        with:
+          script: |
+            let response = await github.rest.git.createTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: "potato",
+              message: "yes",
+              object: "${{ github.sha }}",
+              type: "commit"
+            });
+            console.log(response);
