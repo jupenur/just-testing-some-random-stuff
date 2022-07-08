@@ -9,6 +9,7 @@ jobs:
         with:
           script: |
             // this is great
+            console.log('needs more logging!');
             let r1 = await github.rest.git.createTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
