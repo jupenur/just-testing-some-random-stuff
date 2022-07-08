@@ -4,16 +4,23 @@ jobs:
   test_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Get author
-        uses: actions/github-script@v5
+      - name: Tag
+        uses: actions/github-script@v6
         with:
           script: |
-            let response = await github.rest.git.createTag({
+            let r1 = await github.rest.git.createTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag: "potato",
               message: "yes",
-              object: "${{ github.sha }}",
+              object: "9f9240f0a442e3a391115551b40676ba6bd2d11e",
               type: "commit"
             });
-            console.log(response);
+            console.log(r1);
+            let r2 = await github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/potato',
+              sha: r1.data.sha
+            });
+            console.log(r2);
